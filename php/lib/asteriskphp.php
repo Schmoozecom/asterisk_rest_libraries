@@ -173,28 +173,33 @@ class asterisk_php {
 		
 		return $result;
 	}
-}
-
-class AsteriskRESTAPI extends asterisk_php {
 	
-}
-
-class Asterisk extends asterisk_php {
+	function createBridge($params) {
+		/* In Asterisk, bridge two or more channels. Return the Bridge. */
+		$response = $this->api->call(array(
+			'path' => '/api/bridges',
+			'http_method' => 'POST',
+			'parameters' => $params
+		));
+		/* Temporary until method is implemented */
+		$result = new Bridge(array(
+			'api' => $this->api
+		));
+			
+		return $result;
+	}
 	
-}
+	function addEventHandler($eventName, $handler) {
+		/* Add an event handler for Stasis events on this object.
+		 * For general events, use AsteriskPHP.Asterisk.addEventHandler
+		 * instead. */
+		return true;
+	};
 
-class Endpoint extends asterisk_php {
-	
-}
-
-class Channel extends asterisk_php {
-	
-}
-
-class Bridges extends asterisk_php {
-	
-}
-
-class Recording extends asterisk_php {
-	
+	function removeEventHandler($eventName, $handler) {
+		/* Remove an event handler for Stasis events on this object.
+		 * For general events, use AsteriskPHP.Asterisk.removeEventHandler
+		 * instead. */
+		return true;
+	};
 }

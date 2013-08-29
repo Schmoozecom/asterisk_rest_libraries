@@ -1,0 +1,36 @@
+function {CLASS_NAME} {
+	/* Definition of {CLASS_NAME} object */
+	function __construct($parameters) {
+		foreach($parameters as $key => $value) {
+			$this->key = $value;
+		}
+		
+		$this->object_id = 1;
+		
+		if (!$this->api) {
+			throw new Exception("Can't make {CLASS_NAME} " 
+			. " instance with AsteriskRESTAPI instance");
+		}
+	}
+	
+	function getId() {
+		/* Return the {CLASS_NAME} object's id. */
+		return $this->object_id;
+	}
+
+	function addEventHandler($eventName, $handler) {
+		/* Add an event handler for Stasis events on this object.
+		 * For general events, use AsteriskPHP.Asterisk.addEventHandler
+		 * instead. */
+		return true;
+	}
+	
+	function removeEventHandler($eventName, $handler) {
+		/* Remove an event handler for Stasis events on this object.
+		 * For general events, use AsteriskPHP.Asterisk.removeEventHandler
+		 * instead. */
+		return true;
+	}
+	
+{CLASS_METHODS}
+}
